@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import React, {useState} from 'react'
+import { Link } from "react-router-dom";
 //import ReactDOM from 'react-dom/client';
 
 
@@ -19,10 +20,11 @@ function Header() {
 		}
 		
 	}
+	const path = window.location.pathname
 return (
 	<Navbar>
 	<StyledButton style={{backgroundColor:"lightblue", height:49}}>Chopin</StyledButton>
-	<StyledButton>Home</StyledButton>
+	<Link to={"/"}><StyledButton>Home</StyledButton></Link>
 	<StyledButton onClick={toggleDropDown}>Menu{showDropDown &&
 		<DropDown>
 			<DropDownContent href="#example">Twórczość</DropDownContent>
@@ -43,14 +45,14 @@ return (
 			<DropDownContent href="http://www.sztukawina.pl/wodka-chopin-rye">Chopin na wieczór</DropDownContent>
 		</DropDown>}
 	</StyledButton>
-	<StyledButton>About us</StyledButton>
+	<Link to={"/About"}><StyledButton>About us</StyledButton></Link>
 	<RightMenu>
 		<StyledInput></StyledInput>
 		<StyledButton>Szukaj</StyledButton>
-		<StyledButton>Logowanie</StyledButton>
+		<Link to={"/Logowanie"}><StyledButton>Logowanie</StyledButton></Link>
 	</RightMenu>
 	</Navbar>
-  )
+ 	   )
 }
 const DropDown = styled.div`
 	position: absolute;
@@ -96,6 +98,7 @@ const StyledButton = styled.button`
 	margin: 0;
 	
 `
+
 const StyledInput = styled.input`
 
 `
