@@ -49,7 +49,7 @@ return (
 	<RightMenu>
 		<StyledInput></StyledInput>
 		<StyledButton>Szukaj</StyledButton>
-		<Link to={"/Logowanie"}><StyledButton>Logowanie</StyledButton></Link>
+		<Link to={"/Login"}><StyledButton>Logowanie</StyledButton></Link>
 	</RightMenu>
 	</Navbar>
  	   )

@@ -4,6 +4,7 @@ import Header from "./components/Header"
 import Home from "./components/Home"
 import Footer from './components/Footer'
 import styled from "styled-components"
+import Login from './components/Login'
 import {Route, Routes} from "react-router-dom"
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
     <Routes>
       <Route path="/"  element={<Home/>}></Route>
       <Route path="/Home" element={<Home/>}></Route>
-      <Route path="/Logowanie" ></Route>
+      <Route path="/Login" element={<Login/>}></Route>
       <Route path="/About" ></Route>
     </Routes>
     
