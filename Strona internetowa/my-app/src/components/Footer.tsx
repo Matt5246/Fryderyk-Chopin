@@ -6,7 +6,7 @@ function Footer() {
   return (
     <Space>
 		<ContactPhoneIcon/>
-    	<Text>Kontakt poprzez email: FryderykChopin@gmail.com</Text>
+    	<Text>Kontakt poprzez email: FryderykChopin@gmail.com </Text>
       
     </Space>
   )
