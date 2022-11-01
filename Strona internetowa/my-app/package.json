@@ -60,5 +60,10 @@
   "devDependencies": {
     "@types/styled-components": "^5.1.26"
   },
-  "proxy": "http://localhost:3000"
+  "proxy": {
+    "/auth/google": {
+      "target": "localhost:3000/"
+    }
+  }
+
 }

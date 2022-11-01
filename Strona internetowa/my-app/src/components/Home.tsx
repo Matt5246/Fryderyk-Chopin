@@ -1,13 +1,15 @@
 import React from 'react'
 import styled from "styled-components"
 import Section from "./Section"
-import "./styles.css"
+import Footer from './Footer'
+
 
 function Home() {
   return (
     <>
     <Section/>
     <Container/>
+    <Footer/>
     </>
     
   )

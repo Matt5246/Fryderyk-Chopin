@@ -2,7 +2,7 @@ import styled from "styled-components"
 import React, {useState} from 'react'
 import { Link } from "react-router-dom";
 //import ReactDOM from 'react-dom/client';
-
+import '../styles.css'
 
 function Header() {
 	const [showDropDown, setShowDropDown] = useState<boolean>(false);
@@ -20,13 +20,17 @@ function Header() {
 		}
 		
 	}
+	const DropDownoff= ()=>{
+		setShowDropDown(false);
+		setShowDropDown1(false);
+	}
 	const path = window.location.pathname
 return (
 	<Navbar>
 	<StyledButton style={{backgroundColor:"lightblue", height:49}}>Chopin</StyledButton>
 	<Link to={"/"}><StyledButton>Home</StyledButton></Link>
 	<StyledButton onClick={toggleDropDown}>Menu{showDropDown &&
-		<DropDown>
+		<DropDown onMouseLeave={DropDownoff}>
 			<DropDownContent href="#example">Twórczość</DropDownContent>
 			<DropDownContent href="#example1">Historia Chopina</DropDownContent>
 			<DropDownContent href="#example2">Utwory</DropDownContent>
@@ -40,16 +44,17 @@ return (
 		</DropDown>}
 	</StyledButton>
 	<StyledButton onClick={toggleDropDown1}>News{showDropDown1 && 
-		<DropDown>
+		<DropDown onMouseLeave={DropDownoff}>
 			<DropDownContent href="https://www.douglas.pl/productbrand_428731.html?trac=pl.01psh.goo.3915227426.%7Bproduct_id%7D.%7Badgroupid%7D.000000&cpkey=A-Pww7CDJF6uQ3M-sBPx6G7ky_gH59ww9KPENEgkOn6f-qsVgt2Ze5YRK1Q0L7lK&gclid=Cj0KCQjwl8XtBRDAARIsAKfwtxAcVKWkuPy8UnCSblOaMQUVQMxQGf78uLZhZoJ2ZFkrVRi2gcAarH0aAvFvEALw_wcB">Chopin w 2019</DropDownContent>
 			<DropDownContent href="http://www.sztukawina.pl/wodka-chopin-rye">Chopin na wieczór</DropDownContent>
 		</DropDown>}
 	</StyledButton>
 	<Link to={"/About"}><StyledButton>About us</StyledButton></Link>
+	<Link to={"/Scripts"}><StyledButton>Scripts</StyledButton></Link>
 	<RightMenu>
 		<StyledInput></StyledInput>
 		<StyledButton>Szukaj</StyledButton>
-		<Link to={"/Login"}><StyledButton>Logowanie</StyledButton></Link>
+		<Link to={"/Logowanie"}><StyledButton>Logowanie</StyledButton></Link>
 	</RightMenu>
 	</Navbar>
  	   )

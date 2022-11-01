@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from "styled-components"
-import './styles.css'
-import {useState, useRef, useEffect} from "react";
+import '../styles.css'
+import {useState, useEffect} from "react";
 
 function Login() {
     const [name, setname] = useState<string>('')
     const [showText, setShowText] = useState<boolean>(false)
-    const inputRef = useRef()
+    
     function onSubmit(){
         //preventDefault()
         //const value = inputRef.current.value
@@ -17,8 +17,6 @@ function Login() {
         const newValue =event.target.value;
         setname(newValue);
         
-        
-        
     }
     useEffect(()=>{
         if(name===''){
@@ -28,7 +26,8 @@ function Login() {
         }
     })
   return (
-    <Form onSubmit={onSubmit}>
+    <Content>
+        <Form onSubmit={onSubmit}>
         <table className="form_tab">
             <label>Login:</label>
             <tr>
@@ -48,14 +47,15 @@ function Login() {
                 <td></td>
             </tr>
         </table>
-        
-        
-       
-    </Form>
+        </Form>
+    </Content>
+    
   )
 }
 const Form = styled.form`
-height: 1000px;
+margin-top: 20%;
+
+margin-bottom: 25%;
 `
 const Input = styled.input`
 margin:5px;
@@ -65,5 +65,8 @@ const Select = styled.select`
 min-width: 150px;
 
 `
+const Content = styled.div`
 
+
+`
 export default Login;
