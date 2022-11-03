@@ -8,12 +8,14 @@ import Login from './components/Login'
 import About from './components/About'
 import Scripts from './components/Scripts'
 import {Route, Routes} from "react-router-dom"
+import Navigation from './components/Navigation'
 
 function App() {
 
   return (
   <>
     <Menu>
+      {/* <Navigation/> */}
       <Header/>
     </Menu>
     <Routes>
