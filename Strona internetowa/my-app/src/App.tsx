@@ -15,8 +15,8 @@ function App() {
   return (
   <>
     <Menu>
-      {/* <Navigation/> */}
-      <Header/>
+      <Navigation/>
+      {/* <Header/> */}
     </Menu>
     <Routes>
       <Route path="/"  element={<Home/>}></Route>

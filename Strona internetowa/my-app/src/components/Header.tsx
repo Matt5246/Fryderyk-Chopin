@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import React, {useState} from 'react'
+// import CSSModules from 'react-css-modules'
 import { Link } from "react-router-dom";
+
 //import ReactDOM from 'react-dom/client';
 import '../styles.css'
 
@@ -16,7 +18,7 @@ function Header() {
 	const toggleDropDown1 = ()=> {
 		setShowDropDown1(!showDropDown1);
 		if(showDropDown=== true){
-			toggleDropDown();
+			toggleDropDown();			
 		}
 		
 	}
@@ -24,38 +26,41 @@ function Header() {
 		setShowDropDown(false);
 		setShowDropDown1(false);
 	}
+	
 	const path = window.location.pathname
 return (
 	<Navbar>
-	<StyledButton style={{backgroundColor:"lightblue", height:49}}>Chopin</StyledButton>
-	<Link to={"/"}><StyledButton>Home</StyledButton></Link>
-	<StyledButton onClick={toggleDropDown}>Menu{showDropDown &&
-		<DropDown onMouseLeave={DropDownoff}>
-			<DropDownContent href="#example">Twórczość</DropDownContent>
-			<DropDownContent href="#example1">Historia Chopina</DropDownContent>
-			<DropDownContent href="#example2">Utwory</DropDownContent>
-			<DropDownContent href="#example3">Rozpoczęcie kariery</DropDownContent>
-			<DropDownContent href="#example4">Geneaologia</DropDownContent>
-			<DropDownContent href="#example5">Znaczenie twórczości</DropDownContent>
-			<DropDownContent href="#example6">Międzynarodowy konkurs pianistyczny</DropDownContent>
-			<DropDownContent href="#example7">Ochrona prawna</DropDownContent>
-			<DropDownContent href="#example8">Pomnik Chopina</DropDownContent>
-			<DropDownContent href="#example9">Bibliografia</DropDownContent>
-		</DropDown>}
-	</StyledButton>
-	<StyledButton onClick={toggleDropDown1}>News{showDropDown1 && 
-		<DropDown onMouseLeave={DropDownoff}>
-			<DropDownContent href="https://www.douglas.pl/productbrand_428731.html?trac=pl.01psh.goo.3915227426.%7Bproduct_id%7D.%7Badgroupid%7D.000000&cpkey=A-Pww7CDJF6uQ3M-sBPx6G7ky_gH59ww9KPENEgkOn6f-qsVgt2Ze5YRK1Q0L7lK&gclid=Cj0KCQjwl8XtBRDAARIsAKfwtxAcVKWkuPy8UnCSblOaMQUVQMxQGf78uLZhZoJ2ZFkrVRi2gcAarH0aAvFvEALw_wcB">Chopin w 2019</DropDownContent>
-			<DropDownContent href="http://www.sztukawina.pl/wodka-chopin-rye">Chopin na wieczór</DropDownContent>
-		</DropDown>}
-	</StyledButton>
-	<Link to={"/About"}><StyledButton>About us</StyledButton></Link>
-	<Link to={"/Scripts"}><StyledButton>Scripts</StyledButton></Link>
-	<RightMenu>
-		<StyledInput></StyledInput>
-		<StyledButton>Szukaj</StyledButton>
-		<Link to={"/Login"}><StyledButton>Logowanie</StyledButton></Link>
-	</RightMenu>
+		<LeftMenu>
+			<StyledButton style={{backgroundColor:"lightblue", height:49}}>Chopin</StyledButton>
+			<Link to={"/"}><StyledButton>Home</StyledButton></Link>
+			<StyledButton onClick={toggleDropDown}>Menu{showDropDown &&
+				<DropDown id="DropDown" onMouseLeave={DropDownoff}>
+					<DropDownContent href="#example">Twórczość</DropDownContent>
+					<DropDownContent href="#example1">Historia Chopina</DropDownContent>
+					<DropDownContent href="#example2">Utwory</DropDownContent>
+					<DropDownContent href="#example3">Rozpoczęcie kariery</DropDownContent>
+					<DropDownContent href="#example4">Geneaologia</DropDownContent>
+					<DropDownContent href="#example5">Znaczenie twórczości</DropDownContent>
+					<DropDownContent href="#example6">Międzynarodowy konkurs pianistyczny</DropDownContent>
+					<DropDownContent href="#example7">Ochrona prawna</DropDownContent>
+					<DropDownContent href="#example8">Pomnik Chopina</DropDownContent>
+					<DropDownContent href="#example9">Bibliografia</DropDownContent>
+				</DropDown>}
+			</StyledButton>
+			<StyledButton onClick={toggleDropDown1}>News{showDropDown1 && 
+				<DropDown onMouseLeave={DropDownoff}>
+					<DropDownContent href="https://www.douglas.pl/productbrand_428731.html?trac=pl.01psh.goo.3915227426.%7Bproduct_id%7D.%7Badgroupid%7D.000000&cpkey=A-Pww7CDJF6uQ3M-sBPx6G7ky_gH59ww9KPENEgkOn6f-qsVgt2Ze5YRK1Q0L7lK&gclid=Cj0KCQjwl8XtBRDAARIsAKfwtxAcVKWkuPy8UnCSblOaMQUVQMxQGf78uLZhZoJ2ZFkrVRi2gcAarH0aAvFvEALw_wcB">Chopin w 2019</DropDownContent>
+					<DropDownContent href="http://www.sztukawina.pl/wodka-chopin-rye">Chopin na wieczór</DropDownContent>
+				</DropDown>}
+			</StyledButton>
+			<Link to={"/About"}><StyledButton>About us</StyledButton></Link>
+			<Link to={"/Scripts"}><StyledButton>Scripts</StyledButton></Link>
+		</LeftMenu>
+		<RightMenu>
+			<StyledInput></StyledInput>
+			<StyledButton>Szukaj</StyledButton>
+			<Link to={"/Login"}><StyledButton>Logowanie</StyledButton></Link>
+		</RightMenu>
 	</Navbar>
  	   )
 }
@@ -77,7 +82,6 @@ const DropDownContent =styled.a`
 	text-align: left;
 `
 const Navbar = styled.div`
-	
 	list-style-type: none;
 	color: black ;
 	background-color: #333;
@@ -88,9 +92,11 @@ const Navbar = styled.div`
 	margin-top: 0px;
 	padding: 0px;
 	height: 49px;
+	min-width: 900px;
 `
 const RightMenu = styled.div`
 	float: right;
+	
 `
 const StyledButton = styled.button`
 	font-size: 16px;  
@@ -103,8 +109,13 @@ const StyledButton = styled.button`
 	margin: 0;
 	
 `
+const LeftMenu = styled.div`
+	float: left;
+
+`
 
 const StyledInput = styled.input`
+	width: 140px;
 
 `
 

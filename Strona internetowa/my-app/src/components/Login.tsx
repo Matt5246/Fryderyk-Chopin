@@ -26,34 +26,36 @@ function Login() {
         }
     })
   return (
-    <Content>
-        <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit}>
         <table className="form_tab">
             <label>Login:</label>
             <tr>
                 <td><Input name="name" type="text" value={name} onChange={onChange}></Input></td>
             </tr>
-            hasło:
+            Password:
             <tr>
-                <td><Input type="text" ></Input></td>
+                <td><Input type="password" ></Input></td>
             </tr>
-            
+            Password:
+            <tr>
+                <td><Input type="password" ></Input></td>
+            </tr>
             <tr>
                 <td><button type="submit" >Sign in</button></td>
             </tr>
             <tr><p>{showText &&(<p>login: {name}</p>) }</p></tr>
             <tr>
-               
+            
                 <td></td>
             </tr>
         </table>
-        </Form>
-    </Content>
+    </Form>
+    
     
   )
 }
 const Form = styled.form`
-margin-top: 20%;
+margin-top: 10%;
 
 margin-bottom: 25%;
 `
@@ -63,10 +65,6 @@ margin:5px;
 `
 const Select = styled.select`
 min-width: 150px;
-
-`
-const Content = styled.div`
-
 
 `
 export default Login;
