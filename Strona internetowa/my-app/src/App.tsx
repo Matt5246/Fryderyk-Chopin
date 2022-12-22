@@ -15,15 +15,15 @@ function App() {
   return (
   <>
     <Menu>
-      <Navigation/>
-      {/* <Header/> */}
+      {/* <Navigation/> */}
+      <Header/>
     </Menu>
     <Routes>
       <Route path="/"  element={<Home/>}></Route>
       <Route path="/Home" element={<Home/>}></Route>
       <Route path="/Login" element={<Login/>}></Route>
       <Route path="/About" element={<About/>}></Route>
-      {/* <Route path="/Scripts" element={<Scripts/>}></Route> */}
+      <Route path="/Scripts" element={<Scripts/>}></Route>
     </Routes>
     
     

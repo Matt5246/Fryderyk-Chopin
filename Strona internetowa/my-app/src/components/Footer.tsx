@@ -16,13 +16,12 @@ const Text = styled.div`
 	padding-left:15px;
 `
 const Space = styled.div`
-	height: 25px;
+	height: 60px;
 	padding: 15px;
 	background-color: #333;
 	color: white;
 	font-family:Arial;
 	margin-top: 20px;
-	margin-bottom: 20px;
 	justify-content:left;
 	display: flex;
 	width: 100%;

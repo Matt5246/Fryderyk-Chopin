@@ -15,6 +15,9 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import { Link } from 'react-router-dom';
+import HomeIcon from '@mui/icons-material/Home';
+import ListIcon from '@mui/icons-material/List';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -58,16 +61,25 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function PrimarySearchAppBar() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
   const isMenuOpen = Boolean(anchorEl);
+  const isMenuListOpen = Boolean(anchorEl2);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
-
+  const handleMenuListOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl2(event.currentTarget);
+  };
+  const handleMenuListClose = () => {
+    setAnchorEl2(null);
+    setAnchorEl(null);
+    handleMobileMenuClose();
+  };
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -80,6 +92,36 @@ export default function PrimarySearchAppBar() {
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  const menuListId = 'primary-search-account-menu';
+  const renderMenuList = (
+    <Menu
+      anchorEl={anchorEl2}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      id={menuListId}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={isMenuListOpen}
+      onClose={handleMenuListClose}
+    >
+      <MenuItem><a href="#example" style={{ color: 'inherit' }}>Twórczość</a></MenuItem>
+      <MenuItem><a href="#example1" style={{ color: 'inherit' }}>Historia Chopina</a></MenuItem>
+      <MenuItem><a href="#example2" style={{ color: 'inherit' }}>Utwory</a></MenuItem>
+      <MenuItem><a href="#example3" style={{ color: 'inherit' }}>Rozpoczęcie kariery</a></MenuItem>
+      <MenuItem><a href="#example4" style={{ color: 'inherit' }}>Geneaologia</a></MenuItem>
+      <MenuItem><a href="#example5" style={{ color: 'inherit' }}>Znaczenie twórczości</a></MenuItem>
+      <MenuItem><a href="#example6" style={{ color: 'inherit' }}>Międzynarodowy konkurs pianistyczny</a></MenuItem>
+      <MenuItem><a href="#example7" style={{ color: 'inherit' }}>Ochrona prawna</a></MenuItem>
+      <MenuItem><a href="#example8" style={{ color: 'inherit' }}>Pomnik Chopina</a></MenuItem>
+      <MenuItem><a href="#example9" style={{ color: 'inherit' }}>Bibliografia</a></MenuItem>
+    </Menu>
+  );
 
   const menuId = 'primary-search-account-menu';
   const renderMenu = (
@@ -98,8 +140,8 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <Link to="/Login" style={{ color: 'inherit' }}><MenuItem onClick={handleMenuClose}>Login</MenuItem></Link>
+      <Link to="/Login" style={{ color: 'inherit' }}><MenuItem onClick={handleMenuClose}>Register</MenuItem></Link>
     </Menu>
   );
 
@@ -122,7 +164,7 @@ export default function PrimarySearchAppBar() {
     >
       <MenuItem>
         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="error">
+          <Badge badgeContent={1} color="error">
             <MailIcon />
           </Badge>
         </IconButton>
@@ -134,14 +176,24 @@ export default function PrimarySearchAppBar() {
           aria-label="show 17 new notifications"
           color="inherit"
         >
-          <Badge badgeContent={17} color="error">
+          <Badge badgeContent={5} color="error">
             <NotificationsIcon />
           </Badge>
         </IconButton>
         <p>Notifications</p>
       </MenuItem>
+      <MenuItem>
+        <IconButton
+          size="large"
+          aria-label="show 17 new notifications"
+          color="inherit"
+        >
+        </IconButton>
+        <p>podstrona</p>
+      </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
+        
           size="large"
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
@@ -187,31 +239,41 @@ export default function PrimarySearchAppBar() {
           </Search>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
+
+            <IconButton 
+              size="large" 
+              color="inherit"
+              aria-label="show 4 new mails"
+              onClick={handleMenuListOpen}
+            >
+              <Badge badgeContent={10} color="error">
+                <ListIcon/>
               </Badge>
             </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
+            <Link to="/Home" style={{ color: 'inherit' }}>
+              <IconButton
+                size="large"
+                aria-label="show 17 new notifications"
+                color="inherit"
+              >
+                <Badge badgeContent={0} color="error">
+                  <HomeIcon/>
+                </Badge>
+              </IconButton>
+            </Link>
+            
+              <IconButton
+                color="inherit"
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                onClick={handleProfileMenuOpen}
+              >
+                <AccountCircle />
+              </IconButton>
+            
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
@@ -229,6 +291,7 @@ export default function PrimarySearchAppBar() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      {renderMenuList}
     </Box>
   );
 }
